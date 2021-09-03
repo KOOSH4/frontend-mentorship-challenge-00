@@ -1,8 +1,8 @@
 @import url(reset.css);
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
-@mixin Flexes() {
+@mixin Flexes($direction) {
   display: flex;
-  flex-direction: column;
+  flex-direction: $direction;
   justify-content: center;
   align-items: center;
 }
@@ -18,7 +18,7 @@ body {
   font-size: 62.5%;
   font-size: 1.1rem;
   color: $textColor;
-  @include Flexes();
+  @include Flexes(column);
   height: 100vh;
   overflow: hidden;
   scroll-behavior: smooth;
@@ -27,7 +27,7 @@ body {
   animation: gradient 25s ease infinite;
 }
 main {
-  @include Flexes();
+  @include Flexes(column);
 }
 input {
   width: 100%;
@@ -40,13 +40,10 @@ input {
   border: white 4px;
 }
 ul {
+  @include Flexes(row);
+  justify-content: space-between;
   margin: 1rem;
   padding: 1rem;
-  @include Flexes();
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   border-radius: 15px;
   background-color: $shadowsColor;
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
